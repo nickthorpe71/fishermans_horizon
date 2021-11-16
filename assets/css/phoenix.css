@@ -68,10 +68,10 @@ header section {
   text-align: center;
 }
 
-main {
+/* main {
   background-image: url("../img/ParallaxSky/demo01_PixelSky_layer01.png");
   background-color: #fff;
-}
+} */
 
 
 @media (min-width: 40.0rem) { /* Small devices (landscape phones, 576px and up) */
