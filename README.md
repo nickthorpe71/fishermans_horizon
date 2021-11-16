@@ -14,3 +14,7 @@ Build a simple pixel art game with animation and user mouse event interaction (d
 - complex user front end behavior (drag and drop)
 - using js libraries with liveview (sortablejs)
 - liveview hooks
+
+### Stack
+- phoenix live view
+- tailwind css
