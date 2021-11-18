@@ -87,3 +87,18 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.sortable-ghost {
+  opacity: 0.75;
+}
+
+.game {
+  background-image: url('/images/ParallaxSky/demo01_PixelSky_layer02.png');
+  background-repeat: no-repeat, repeat;
+  background-color: #62abd4;
+  width: 100%;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-position-y: center;
+}
