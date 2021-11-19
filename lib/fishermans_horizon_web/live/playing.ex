@@ -5,9 +5,9 @@ defmodule FishermansHorizonWeb.PageLive.Playing do
   @impl true
 
   def mount(_params, _session, socket) do
-    # if connected?(socket) do
-    #   :timer.send_interval(1000, :tick)
-    # end
+    if connected?(socket) do
+      :timer.send_interval(1000, :tick)
+    end
 
     {:ok, new_game(socket)}
   end
@@ -17,7 +17,6 @@ defmodule FishermansHorizonWeb.PageLive.Playing do
   end
 
   @impl true
-
   def handle_event(
         "dropped",
         %{
@@ -49,4 +48,19 @@ defmodule FishermansHorizonWeb.PageLive.Playing do
       draggable.id == dragged_id
     end)
   end
+
+  @impl true
+  def handle_info(:tick, socket) do
+    {:noreply, socket |> update_time |> maybe_end_game}
+  end
+
+  def update_time(%{assigns: %{game: game}} = socket) do
+    assign(socket, game: Game.update_time(game))
+  end
+
+  def maybe_end_game(%{assigns: %{game: %{game_over: true}}} = socket) do
+    socket |> push_redirect(to: "/gameover?score=#{socket.assigns.game.score}")
+  end
+
+  def maybe_end_game(socket), do: socket
 end

@@ -92,6 +92,20 @@
   opacity: 0.75;
 }
 
+.welcome {
+  margin-bottom: 1140px;
+}
+
+.leader-board {
+  text-align: center;
+  background: #eee;
+  border-radius: 6px;
+  padding: 3em 3em 1em;
+  margin-bottom: 28rem;
+  font-weight: 200;
+  font-size: 120%;
+}
+
 .game {
   background-image: url('/images/Resized/background.png');
   width: 100vw;
@@ -136,6 +150,14 @@
 .score {
   position: absolute;
   bottom: 520px;
+  left: -190px;
+  display: flex;
+  flex-direction: row;
+}
+
+.time {
+  position: absolute;
+  bottom: 490px;
   left: -190px;
   display: flex;
   flex-direction: row;

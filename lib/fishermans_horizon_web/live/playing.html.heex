@@ -1,7 +1,11 @@
 <div>
-    <div class="score">
+    <div class="score text-gray-200">
         <h1>Score:</h1>
         <h1><%= @game.score %></h1>
+    </div>
+    <div class="time text-gray-200">
+        <p>Time:</p>
+        <p><%= @game.time %></p>
     </div>
     <div class="fisherman_fishing"></div>
     <div class="fish-container" phx-hook="Drag" id="drag">

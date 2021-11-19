@@ -91,4 +91,15 @@ defmodule FishermansHorizon.Game do
       draggable.id != dragged_id
     end)
   end
+
+  def update_time(game) do
+    %{game | time: game.time + 1}
+    |> check_game_over
+  end
+
+  def check_game_over(%{time: time} = game) when time >= 10 do
+    %{game | game_over: true}
+  end
+
+  def check_game_over(game), do: game
 end
