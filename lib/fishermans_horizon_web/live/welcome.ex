@@ -9,11 +9,11 @@ defmodule FishermansHorizonWeb.PageLive.Welcome do
     }
   end
 
-  defp play(socket) do
-    push_redirect(socket, to: "/playing")
+  defp play(socket, user) do
+    push_redirect(socket, to: "/playing?user=#{user}")
   end
 
-  def handle_event("play", _, socket) do
-    {:noreply, play(socket)}
+  def handle_event("play", %{"play" => %{"user" => user}}, socket) do
+    {:noreply, play(socket, user)}
   end
 end

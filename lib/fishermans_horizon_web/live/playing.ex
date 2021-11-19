@@ -4,12 +4,12 @@ defmodule FishermansHorizonWeb.PageLive.Playing do
 
   @impl true
 
-  def mount(_params, _session, socket) do
+  def mount(params, _session, socket) do
     if connected?(socket) do
       :timer.send_interval(1000, :tick)
     end
 
-    {:ok, new_game(socket)}
+    {:ok, socket |> new_game |> assign(user: params["user"])}
   end
 
   def new_game(socket) do
@@ -59,7 +59,10 @@ defmodule FishermansHorizonWeb.PageLive.Playing do
   end
 
   def maybe_end_game(%{assigns: %{game: %{game_over: true}}} = socket) do
-    socket |> push_redirect(to: "/gameover?score=#{socket.assigns.game.score}")
+    socket
+    |> push_redirect(
+      to: "/gameover?user=#{socket.assigns.user}&score=#{socket.assigns.game.score}"
+    )
   end
 
   def maybe_end_game(socket), do: socket

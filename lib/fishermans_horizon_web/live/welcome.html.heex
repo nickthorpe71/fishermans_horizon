@@ -1,5 +1,9 @@
 <section class="welcome">
     <div>
-        <button phx-click="play">Play</button>
+        <%= form_for :play, "#", [phx_submit: "play"], fn f -> %>
+            <%= label f, :"enter name" %>
+            <%= text_input f, :user %>
+            <%= submit "Play" %>
+        <% end %>
     </div>
 </section>
