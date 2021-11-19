@@ -1,7 +1,12 @@
-<section class="phx-hero">
+<section class="leader-board">
     <div>
         <h1>Leader Board</h1>
         <h2>Final score: <%= @score %></h2>
         <button phx-click="restart">Play Again</button>
+        <ol class="list-decimal text-left">
+        <%= for %{score: score, user_name: user_name} <- @scores do %>
+            <li><%= score %> <%= user_name %></li>
+        <% end %>
+        </ol>
     </div>
 </section>
