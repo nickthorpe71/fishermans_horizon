@@ -22,6 +22,7 @@ pre{padding: 1em;}
 body{
   font-family: 'Press Start 2P', cursive;
   height: 100vh;
+  overflow: hidden;
 }
 
 html{
@@ -31,7 +32,6 @@ html{
 .container{
   margin: 0 auto;
   max-width: 80.0rem;
-  padding: 0 2.0rem;
   position: relative;
   width: 100%
 }
@@ -74,12 +74,6 @@ header section {
   flex-direction: column;
   text-align: center;
 }
-
-/* main {
-  background-image: url("../img/ParallaxSky/demo01_PixelSky_layer01.png");
-  background-color: #fff;
-} */
-
 
 @media (min-width: 40.0rem) { /* Small devices (landscape phones, 576px and up) */
 

@@ -4,23 +4,36 @@ defmodule FishermansHorizonWeb.PageLive do
   @impl true
 
   def mount(_params, _session, socket) do
-    # this is hardcoded but will eventually be from a datasource
-    fish = [
-      %{id: "drag-me-0", name: "Carp", weight: "8.8 lbs"},
-      %{id: "drag-me-1", name: "Perch", weight: "5.8 lbs"},
-      %{id: "drag-me-2", name: "Bass", weight: "11.0 lbs"},
-      %{id: "drag-me-3", name: "Walleye", weight: "6.5 lbs"},
-      %{id: "drag-me-4", name: "Pike", weight: "8.2lbs"},
-      %{id: "drag-me-5", name: "Trout", weight: "14.8lbs"}
+    all_fish = [
+      %{id: "drag-me-0", name: "angler", weight: 80},
+      %{id: "drag-me-1", name: "bass", weight: 55},
+      %{id: "drag-me-2", name: "cod", weight: 110},
+      %{id: "drag-me-3", name: "ray", weight: 65},
+      %{id: "drag-me-4", name: "shark", weight: 182},
+      %{id: "drag-me-5", name: "sunfish", weight: 148},
+      %{id: "drag-me-6", name: "trout", weight: 165},
+      %{id: "drag-me-7", name: "walleye", weight: 23}
     ]
 
     socket =
       socket
-      |> assign(:fish, fish)
+      |> assign(:all_fish, all_fish)
+      |> assign(:fish, new_batch_of_fish(all_fish))
       |> assign(:fisherman_a, [])
       |> assign(:fisherman_b, [])
+      |> assign(:score, 0)
 
     {:ok, socket}
+  end
+
+  def random_fish(all_fish, id) do
+    random_index = :rand.uniform(Enum.count(all_fish)) - 1
+    fish = Enum.at(all_fish, random_index)
+    %{id: "drag-me-#{id}", name: fish.name, weight: fish.weight}
+  end
+
+  def new_batch_of_fish(all_fish) do
+    Enum.map(0..16, fn i -> random_fish(all_fish, i) end)
   end
 
   @impl true
@@ -55,7 +68,43 @@ defmodule FishermansHorizonWeb.PageLive do
         |> assign(zone_atom, updated_list)
       end)
 
-    {:noreply, socket}
+    {:noreply, socket |> haul_catch(Enum.count(assigns.fisherman_a))}
+  end
+
+  def haul_catch(socket, count)
+      when count < 2 do
+    socket
+  end
+
+  def haul_catch(socket, count)
+      when count >= 2 do
+    socket
+    |> add_score
+    |> assign(fisherman_a: [])
+    |> add_new_fish
+  end
+
+  def add_new_fish(%{assigns: %{all_fish: all_fish}} = socket) do
+    assign(socket,
+      fish: new_batch_of_fish(all_fish)
+    )
+  end
+
+  def add_score(%{assigns: %{score: score, fisherman_a: fisherman_a}} = socket) do
+    matching = Enum.filter(fisherman_a, fn fish -> fish.name == Enum.at(fisherman_a, 0).name end)
+
+    multiplier =
+      if Enum.count(matching) >= 3 do
+        # show multiplier on screen
+        IO.puts("Multiplier!")
+        2
+      else
+        1
+      end
+
+    assign(socket,
+      score: Enum.reduce(fisherman_a, score, fn fish, acc -> acc + fish.weight end) * multiplier
+    )
   end
 
   defp find_dragged(%{fish: fish, fisherman_a: fisherman_a, fisherman_b: fisherman_b}, dragged_id) do
@@ -76,6 +125,11 @@ defmodule FishermansHorizonWeb.PageLive do
       when list_atom != drop_zone_atom do
     assigns[list_atom]
     |> remove_dragged(dragged.id)
+  end
+
+  def test_list(list) do
+    list
+    |> Enum.each(fn item -> IO.puts(item.name) end)
   end
 
   def remove_dragged(list, dragged_id) do

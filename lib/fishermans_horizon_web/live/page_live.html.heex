@@ -1,21 +1,23 @@
-<div  phx-hook="Drag" id="drag">
-    <%= live_component @socket, FishermansHorizonWeb.PageLive.DropZoneComponent,
-        draggables: @fisherman_a,
-        drop_zone_id: "fisherman_a",
-        title: "Fisherman A",
-        color: "orange"
-    %>
+<div>
+    <div class="score">
+        <h1>Score:</h1>
+        <h1><%= @score %></h1>
+    </div>
+    <div class="fish-container" phx-hook="Drag" id="drag">
+        <%= live_component @socket, FishermansHorizonWeb.PageLive.DropZoneComponent,
+            draggables: @fisherman_a,
+            drop_zone_id: "fisherman_a",
+            title: "Fisherman A",
+            color: "green"
+        %>
 
-    <%= live_component @socket, FishermansHorizonWeb.PageLive.DropZoneComponent,
-        draggables: @fisherman_b,
-        drop_zone_id: "fisherman_b",
-        title: "Fisherman B",
-        color: "green"
-    %>
-
-    <div class="dropzone grid gap-3" id="fish">
-        <%= for %{name: name, weight: weight, id: id} <- @fish do %>
-        <div draggable="true" id={id} class="draggable p-4 bg-blue-700 text-white"><%= name %> <%= weight %></div>
-        <% end %>
+        <div class="dropzone grid grid-cols-3 gap-3" id="fish">
+            <%= for %{name: name, id: id} <- @fish do %>
+                <%= live_component @socket, FishermansHorizonWeb.PageLive.FishComponent,
+                    id: id,
+                    name: name
+                %>
+            <% end %>
+        </div>
     </div>
 </div>

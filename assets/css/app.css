@@ -93,12 +93,38 @@
 }
 
 .game {
-  background-image: url('/images/ParallaxSky/demo01_PixelSky_layer02.png');
-  background-repeat: no-repeat, repeat;
-  background-color: #62abd4;
-  width: 100%;
-  /* background-size: cover; */
+  background-image: url('/images/Resized/background.png');
+  width: 100vw;
+  height: 1352px;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: 50%;
-  background-position-y: center;
+  margin-top: -15px;
+  background-position: 46.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score {
+  position: absolute;
+  bottom: 520px;
+  left: -190px;
+  display: flex;
+  flex-direction: row;
+}
+
+.fish-container {
+  position: absolute;
+  bottom: -180px;
+  left: -120px;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  height: 490px;
+}
+
+.fish-bucket {
+  width: 350px;
+  height: 70px;
+  margin-bottom: 70px;
 }
