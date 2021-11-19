@@ -3,6 +3,7 @@
         <h1>Score:</h1>
         <h1><%= @score %></h1>
     </div>
+    <div class="fisherman_fishing"></div>
     <div class="fish-container" phx-hook="Drag" id="drag">
         <%= live_component @socket, FishermansHorizonWeb.PageLive.DropZoneComponent,
             draggables: @fisherman_a,
@@ -11,7 +12,7 @@
             color: "green"
         %>
 
-        <div class="dropzone grid grid-cols-3 gap-3" id="fish">
+        <div class="dropzone grid grid-cols-3 gap-10" id="fish">
             <%= for %{name: name, id: id} <- @fish do %>
                 <%= live_component @socket, FishermansHorizonWeb.PageLive.FishComponent,
                     id: id,

@@ -105,6 +105,34 @@
   align-items: center;
 }
 
+.fisherman_fishing {
+  height: 227px;
+  width: 96.25px;
+  position: absolute;
+  bottom: 186px;
+  left: 0px;
+  background: url("/images/Resized/fisherman_fish.png");
+  animation: fisherman_fishing 1.5s steps(4) infinite;
+}
+
+@keyframes fisherman_fishing {
+  to { background-position: -385px; }
+}
+
+.fisherman_haul {
+  height: 227px;
+  width: 96.25px;
+  position: absolute;
+  bottom: 186px;
+  left: 0px;
+  background: url("/images/Resized/fisherman_fish.png");
+  animation: fisherman_haul 1.5s steps(4) infinite;
+}
+
+@keyframes fisherman_haul {
+  to { background-position: -385px; }
+}
+
 .score {
   position: absolute;
   bottom: 520px;
@@ -115,16 +143,104 @@
 
 .fish-container {
   position: absolute;
-  bottom: -180px;
+  bottom: -210px;
   left: -120px;
   display: flex;
   flex-direction: column;
   align-items: right;
-  height: 490px;
+  height: 520px;
 }
 
 .fish-bucket {
   width: 350px;
   height: 70px;
   margin-bottom: 70px;
+}
+
+.angler {
+  width: 56.5px;
+  height: 49px;
+  background: url("/images/Resized/angler.png");
+  animation: angler 1.2s steps(2) infinite;
+}
+
+@keyframes angler {
+  to { background-position: -113px; }
+}
+
+.ray {
+  width: 60px;
+  height: 25px;
+  background: url("/images/Resized/ray.png");
+  animation: ray 2s steps(2) infinite;
+}
+
+@keyframes ray {
+  to { background-position: -121px; }
+}
+
+.cod {
+  width: 60px;
+  height: 25px;
+  background: url("/images/Resized/cod.png");
+  animation: cod 1.1s steps(2) infinite;
+}
+
+@keyframes cod {
+  to { background-position: -121px; }
+}
+
+.shark  {
+  width: 108.5px;
+  height: 45px;
+  background: url("/images/Resized/shark.png");
+  animation: shark  1.6s steps(2) infinite;
+}
+
+@keyframes shark  {
+  to { background-position: -217px; }
+}
+
+.trout  {
+  width: 52px;
+  height: 25px;
+  background: url("/images/Resized/trout.png");
+  animation: trout  0.9s steps(2) infinite;
+}
+
+@keyframes trout  {
+  to { background-position: -105px; }
+}
+
+.sunfish  {
+  width: 40px;
+  height: 25px;
+  background: url("/images/Resized/sunfish.png");
+  animation: sunfish  0.8s steps(2) infinite;
+}
+
+@keyframes sunfish  {
+  to { background-position: -81px; }
+}
+
+.bass  {
+  width: 32px;
+  height: 25px;
+  background: url("/images/Resized/bass.png");
+  animation: bass  0.7s steps(2) infinite;
+}
+
+@keyframes bass  {
+  to { background-position: -65px; }
+}
+
+.walleye  {
+  width: 23px;
+  height: 13px;
+  background: url("/images/Resized/walleye.png");
+  animation: walleye  0.5s steps(2) infinite;
+}
+
+@keyframes walleye  {
+  to { background-position: -55px; }
 }

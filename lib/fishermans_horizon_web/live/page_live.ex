@@ -1,4 +1,4 @@
-defmodule FishermansHorizonWeb.PageLive do
+defmodule FishermansHorizonWeb.PageLive.Playing do
   use FishermansHorizonWeb, :live_view
 
   @impl true
@@ -20,8 +20,8 @@ defmodule FishermansHorizonWeb.PageLive do
       |> assign(:all_fish, all_fish)
       |> assign(:fish, new_batch_of_fish(all_fish))
       |> assign(:fisherman_a, [])
-      |> assign(:fisherman_b, [])
       |> assign(:score, 0)
+      |> assign(:state, 0)
 
     {:ok, socket}
   end
@@ -33,7 +33,7 @@ defmodule FishermansHorizonWeb.PageLive do
   end
 
   def new_batch_of_fish(all_fish) do
-    Enum.map(0..16, fn i -> random_fish(all_fish, i) end)
+    Enum.map(0..17, fn i -> random_fish(all_fish, i) end)
   end
 
   @impl true
@@ -48,7 +48,7 @@ defmodule FishermansHorizonWeb.PageLive do
         %{assigns: assigns} = socket
       ) do
     drop_zone_atom =
-      [:fish, :fisherman_a, :fisherman_b]
+      [:fish, :fisherman_a]
       |> Enum.find(fn zone_atom -> to_string(zone_atom) == drop_zone_id end)
 
     if drop_zone_atom === nil do
@@ -58,7 +58,7 @@ defmodule FishermansHorizonWeb.PageLive do
     dragged = find_dragged(assigns, dragged_id)
 
     socket =
-      [:fish, :fisherman_a, :fisherman_b]
+      [:fish, :fisherman_a]
       |> Enum.reduce(socket, fn zone_atom, %{assigns: assigns} = accumulator ->
         updated_list =
           assigns
@@ -107,8 +107,8 @@ defmodule FishermansHorizonWeb.PageLive do
     )
   end
 
-  defp find_dragged(%{fish: fish, fisherman_a: fisherman_a, fisherman_b: fisherman_b}, dragged_id) do
-    (fish ++ fisherman_a ++ fisherman_b)
+  defp find_dragged(%{fish: fish, fisherman_a: fisherman_a}, dragged_id) do
+    (fish ++ fisherman_a)
     |> Enum.find(nil, fn draggable ->
       draggable.id == dragged_id
     end)
