@@ -10,7 +10,7 @@ defmodule FishermansHorizonWeb.PageLive.Welcome do
   end
 
   defp play(socket) do
-    push_redirect(socket, to: "/")
+    push_redirect(socket, to: "/playing")
   end
 
   def handle_event("play", _, socket) do

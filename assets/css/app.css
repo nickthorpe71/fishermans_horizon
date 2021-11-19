@@ -143,18 +143,18 @@
 
 .fish-container {
   position: absolute;
-  bottom: -210px;
-  left: -120px;
+  bottom: -240px;
+  left: -110px;
   display: flex;
   flex-direction: column;
   align-items: right;
-  height: 520px;
+  height: 550px;
 }
 
 .fish-bucket {
   width: 350px;
   height: 70px;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
 .angler {

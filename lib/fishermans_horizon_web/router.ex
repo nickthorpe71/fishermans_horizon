@@ -16,7 +16,9 @@ defmodule FishermansHorizonWeb.Router do
 
   scope "/", FishermansHorizonWeb do
     pipe_through :browser
-    live "/", PageLive, :index
+    live "/", PageLive.Welcome, :welcome
+    live "/playing", PageLive.Playing, :playing
+    live "/gameover", PageLive.GameOver, :game_over
   end
 
   # Other scopes may use custom stacks.

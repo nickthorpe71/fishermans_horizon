@@ -9,7 +9,7 @@ defmodule FishermansHorizonWeb.PageLive.GameOver do
   end
 
   defp restart(socket) do
-    push_redirect(socket, to: "/")
+    push_redirect(socket, to: "/playing")
   end
 
   def handle_event("restart", _, socket) do

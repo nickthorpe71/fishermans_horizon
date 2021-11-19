@@ -1,19 +1,19 @@
 <div>
     <div class="score">
         <h1>Score:</h1>
-        <h1><%= @score %></h1>
+        <h1><%= @game.score %></h1>
     </div>
     <div class="fisherman_fishing"></div>
     <div class="fish-container" phx-hook="Drag" id="drag">
         <%= live_component @socket, FishermansHorizonWeb.PageLive.DropZoneComponent,
-            draggables: @fisherman_a,
+            draggables: @game.fisherman_a,
             drop_zone_id: "fisherman_a",
             title: "Fisherman A",
             color: "green"
         %>
 
         <div class="dropzone grid grid-cols-3 gap-10" id="fish">
-            <%= for %{name: name, id: id} <- @fish do %>
+            <%= for %{name: name, id: id} <- @game.fish do %>
                 <%= live_component @socket, FishermansHorizonWeb.PageLive.FishComponent,
                     id: id,
                     name: name
