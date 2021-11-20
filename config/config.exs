@@ -5,17 +5,21 @@
 # is restricted to this project.
 
 # General application configuration
-import Config
+use Mix.Config
 
-config :fishermans_horizon,
-  ecto_repos: [FishermansHorizon.Repo]
+config :fishermans_horizon, FishermansHorizon.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18"),
+  ssl: true,
+  url: System.get_env("DATABASE_URL")
 
 # Configures the endpoint
 config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
-  url: [host: "localhost"],
-  render_errors: [view: FishermansHorizonWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: FishermansHorizon.PubSub,
-  live_view: [signing_salt: "OothOrQM"]
+  load_from_system_env: true,
+  url: [scheme: "https", host: "fierce-crag-79985.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 
 # Configures the mailer
 #
@@ -24,29 +28,27 @@ config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :fishermans_horizon, FishermansHorizon.Mailer, adapter: Swoosh.Adapters.Local
+# config :fishermans_horizon, FishermansHorizon.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
-config :swoosh, :api_client, false
+# config :swoosh, :api_client, false
 
 # Configure esbuild (the version is required)
-config :esbuild,
-  version: "0.12.18",
-  default: [
-    args:
-      ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../assets", __DIR__),
-    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-  ]
+# config :esbuild,
+#   version: "0.12.18",
+#   default: [
+#     args:
+#       ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+#     cd: Path.expand("../assets", __DIR__),
+#     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+#   ]
 
 # Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+config :logger, level: :info
 
 # Use Jason for JSON parsing in Phoenix
-config :phoenix, :json_library, Jason
+# config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{config_env()}.exs"
+# import_config "#{config_env()}.exs"
