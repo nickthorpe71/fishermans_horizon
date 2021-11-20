@@ -1,12 +1,25 @@
 <section class="leader-board">
     <div>
-        <h1>Leader Board</h1>
-        <h2>Final score: <%= @score %></h2>
+        <h1 class="text-gray-700">Leader Board</h1>
+        <h2 class="text-green-400">Your score: <%= @score %></h2>
+        <table class="table-auto">
+            <thead>
+                <tr>
+                    <th class="text-center">Rank</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Score</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                <%= for {%{score: score, user_name: user_name}, inx} <- Enum.with_index(@scores) do %>
+                    <tr>
+                        <td class="text-center"><%= inx + 1 %></td>
+                        <td class="text-center"><%= user_name %></td>
+                        <td class="text-center"><%= score %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+            </table>
         <button phx-click="restart">Play Again</button>
-        <ol class="list-decimal text-left">
-        <%= for %{score: score, user_name: user_name} <- @scores do %>
-            <li><%= score %> <%= user_name %></li>
-        <% end %>
-        </ol>
     </div>
 </section>

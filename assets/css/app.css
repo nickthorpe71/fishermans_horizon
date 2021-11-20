@@ -100,10 +100,8 @@
   text-align: center;
   background: #eee;
   border-radius: 6px;
-  padding: 3em 3em 1em;
-  margin-bottom: 28rem;
-  font-weight: 200;
-  font-size: 120%;
+  padding: 2em 2em 1em;
+  margin-bottom: 70rem;
 }
 
 .game {
@@ -117,6 +115,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.fisherman_idle {
+  height: 97px;
+  width: 96.25px;
+  position: absolute;
+  bottom: -156px;
+  left: 230px;
+  background: url("/images/Resized/fisherman_idle.png");
+  animation: fisherman_idle 1.5s steps(4) infinite;
+}
+
+@keyframes fisherman_idle {
+  to { background-position: -385px; }
 }
 
 .fisherman_fishing {
