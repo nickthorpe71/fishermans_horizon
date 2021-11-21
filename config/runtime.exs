@@ -14,6 +14,9 @@ if config_env() == :prod do
       For example: ecto://USER:PASS@HOST/DATABASE
       """
 
+  config :phoenix, :json_library, Jason
+  config :esbuild, :version, "0.13.10"
+
   config :fishermans_horizon, FishermansHorizon.Repo,
     # ssl: true,
     # socket_options: [:inet6],

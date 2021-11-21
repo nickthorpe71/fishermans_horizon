@@ -13,7 +13,7 @@ defmodule FishermansHorizon.Application do
       # Start the Telemetry supervisor
       FishermansHorizonWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: FishermansHorizon.PubSub},
+      {Phoenix.PubSub, [name: FishermansHorizon.PubSub, adapter: Phoenix.PubSub.PG2]},
       # Start the Endpoint (http/https)
       FishermansHorizonWeb.Endpoint
       # Start a worker by calling: FishermansHorizon.Worker.start_link(arg)

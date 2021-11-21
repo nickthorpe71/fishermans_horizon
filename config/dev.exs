@@ -52,6 +52,9 @@ config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
 # configured to run both http and https servers on
 # different ports.
 
+config :phoenix, :json_library, Jason
+config :esbuild, :version, "0.13.10"
+
 # Watch static and templates for browser reloading.
 config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
   live_reload: [

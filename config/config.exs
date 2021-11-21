@@ -7,20 +7,24 @@
 # General application configuration
 use Mix.Config
 
+config :phoenix, :json_library, Jason
+config :esbuild, :version, "0.13.10"
+
 config :fishermans_horizon, FishermansHorizon.Repo,
   adapter: Ecto.Adapters.Postgres,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "18"),
-  ssl: true,
+  # ssl: true,
   url: System.get_env("DATABASE_URL")
 
 # Configures the endpoint
 config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
   load_from_system_env: true,
   url: [scheme: "https", host: "fierce-crag-79985.herokuapp.com", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  # force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: "gpJju8tLSmGOga0uIScZmBtnspYOr7KExygyQFsnQ6BTwX5P3XFUqlud5BmCoOmb",
-  live_view: [signing_salt: "FrmZUFBVLcb9LABi"]
+  live_view: [signing_salt: "FrmZUFBVLcb9LABi"],
+  pubsub_server: FishermansHorizon.PubSub
 
 # Configures the mailer
 #
