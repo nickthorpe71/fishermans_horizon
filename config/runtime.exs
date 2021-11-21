@@ -31,7 +31,7 @@ if config_env() == :prod do
       port: String.to_integer(System.get_env("PORT") || "4000")
     ],
     live_view: [signing_salt: "FrmZUFBVLcb9LABi"],
-    secret_key_base: secret_key_base
+    secret_key_base: "gpJju8tLSmGOga0uIScZmBtnspYOr7KExygyQFsnQ6BTwX5P3XFUqlud5BmCoOmb"
 
   # ## Using releases
   #
