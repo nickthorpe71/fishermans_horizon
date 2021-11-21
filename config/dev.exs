@@ -22,7 +22,7 @@ config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "RkbWigOELedR3Gv/imFCyL9apGziqu53mfrO46yzHS2VARsUzl0ub55WiDj7lHIO",
+  secret_key_base: "gpJju8tLSmGOga0uIScZmBtnspYOr7KExygyQFsnQ6BTwX5P3XFUqlud5BmCoOmb",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}

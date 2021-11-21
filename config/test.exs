@@ -17,7 +17,7 @@ config :fishermans_horizon, FishermansHorizon.Repo,
 # you can enable the server option below.
 config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "4Qnvu/357sxK1SIdNxSkwdxvSV4cm2NELvQzDjUq89TvHz4Q9N5Vw60yAiA0yQTH",
+  secret_key_base: "gpJju8tLSmGOga0uIScZmBtnspYOr7KExygyQFsnQ6BTwX5P3XFUqlud5BmCoOmb",
   server: false
 
 # In test we don't send emails.
