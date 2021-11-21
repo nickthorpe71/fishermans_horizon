@@ -20,7 +20,7 @@ defmodule FishermansHorizonWeb.Endpoint do
     at: "/",
     from: :fishermans_horizon,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: ~w(css js assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
