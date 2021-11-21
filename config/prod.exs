@@ -7,7 +7,7 @@ config :fishermans_horizon, FishermansHorizonWeb.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "fierce-crag-79985.herokuapp.com", port: 443],
   # force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/manifest.json",
+  # cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: "gpJju8tLSmGOga0uIScZmBtnspYOr7KExygyQFsnQ6BTwX5P3XFUqlud5BmCoOmb"
 
 # Do not print debug messages in production
