@@ -1,8 +1,8 @@
 {
     "repository": {},
     "scripts": {
-        "deploy": "parcel build web/static/js/app.js --out-dir priv/static/assets/js",
-        "watch": "parcel watch web/static/js/app.js --out-dir priv/static/assets/js"
+        "deploy": "parcel build web/static/js/app.js --out-dir ../priv/static/assets/js",
+        "watch": "parcel watch web/static/js/app.js --out-dir ../priv/static/assets/js"
     },
     "dependencies": {
         "babel-brunch": "~6.0.0",
